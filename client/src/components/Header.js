@@ -26,7 +26,7 @@ const Header = () => {
             </>
           ) : (
             <>
-              <Link className="btn btn-lg btn-light m-2" to="/Shop">
+              <Link className="btn btn-lg btn-light m-2" to="/">
                 SHOP
               </Link>
 

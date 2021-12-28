@@ -1,0 +1,17 @@
+[
+  {
+    "name": "John Smith",
+    "email": "jsmith@aol.com",
+    "password": "password"
+  },
+  {
+    "name": "Jane Smith",
+    "email": "janesmith@aol.com",
+    "password": "password1"
+  },
+  {
+    "name": "Jim Smith",
+    "email": "jimsmith@aol.com",
+    "password": "password12"
+  }
+]
