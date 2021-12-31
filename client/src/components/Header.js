@@ -30,6 +30,10 @@ const Header = () => {
                 SHOP
               </Link>
 
+              <Link className="btn btn-lg btn-light m-2" to="/addproduct">
+                Add Product
+              </Link>
+
               <Link
                 className="btn btn-lg btn-light m-2"
                 to="/login"

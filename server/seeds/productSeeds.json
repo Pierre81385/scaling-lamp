@@ -1,0 +1,29 @@
+[
+  {
+    "image": "http://cdn.akc.org/content/article-body-image/keeshond_dog_pictures.jpg",
+    "name": "Henry",
+    "desc": "Henry's a fun loving fluffy buddy!",
+    "quantity": "0",
+    "inventory": "100",
+    "price": "5",
+    "instock": true
+  },
+  {
+    "image": "http://cdn.akc.org/content/article-body-image/golden_puppy_dog_pictures.jpg",
+    "name": "Jasper",
+    "desc": "Jasper is a little cuddle bug.",
+    "quantity": "0",
+    "inventory": "20",
+    "price": "25",
+    "instock": true
+  },
+  {
+    "image": "http://cdn.akc.org/content/article-body-image/pumi_dog_pictures.jpg",
+    "name": "Meelow",
+    "desc": "Meelow isn't the smartest, but he's a happy boi.",
+    "quantity": "0",
+    "inventory": "10",
+    "price": "50",
+    "instock": true
+  }
+]

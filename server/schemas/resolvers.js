@@ -1,10 +1,14 @@
 const { User } = require("../models");
+const { Product } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
     users: async () => {
       return User.find();
+    },
+    products: async () => {
+      return Product.find();
     },
   },
 
@@ -25,6 +29,23 @@ const resolvers = {
       if (!user) {
         throw new AuthenticationError("No user found with this email address");
       }
+
+      addProduct: async (
+        parent,
+        { image, name, desc, quantity, inventory, price, instock }
+      ) => {
+        // Create product
+        const product = await Product.create({
+          image,
+          name,
+          desc,
+          quantity,
+          inventory,
+          price,
+          instock,
+        });
+        return { product };
+      };
 
       // If there is a user found, execute the `isCorrectPassword` instance method and check if the correct password was provided
       const correctPw = await user.isCorrectPassword(password);

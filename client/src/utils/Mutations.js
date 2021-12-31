@@ -23,3 +23,30 @@ export const LOGIN_USER = gql`
     }
   }
 `;
+
+export const ADD_PRODUCT = gql`
+  mutation addProduct(
+    $image: String!
+    $name: String!
+    $desc: String!
+    $quantity: numnber!
+    $inventory: number!
+    $price: number!
+    $instock: Boolean!
+  ) {
+    addProduct(
+      image: $image
+      name: $name
+      desc: $desc
+      quantity: $quantity
+      inventory: $inventory
+      price: $price
+      instock: $instock
+    ) {
+      product {
+        _id
+        name
+      }
+    }
+  }
+`;
