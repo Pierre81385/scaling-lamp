@@ -3,6 +3,8 @@ import { useMutation } from "@apollo/client";
 import { ADD_PRODUCT } from "../utils/Mutations";
 import { Link } from "react-router-dom";
 
+//This page is for ADDING products to the DB by the user.
+
 const AddProduct = () => {
   const [formState, setFormState] = useState({
     iamge: "",

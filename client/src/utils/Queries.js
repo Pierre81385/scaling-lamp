@@ -20,3 +20,17 @@ export const QUERY_SINGLE_USER = gql`
     }
   }
 `;
+
+export const QUERY_PRODUCTS = gql`
+  query allProducts {
+    products {
+      _id
+      image
+      name
+      desc
+      quantity
+      price
+      instock
+    }
+  }
+`;
