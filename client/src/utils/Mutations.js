@@ -29,24 +29,21 @@ export const ADD_PRODUCT = gql`
     $image: String!
     $name: String!
     $desc: String!
-    $quantity: numnber!
-    $inventory: number!
-    $price: number!
-    $instock: Boolean!
+    $price: String!
+    $quantity: String!
   ) {
     addProduct(
       image: $image
       name: $name
       desc: $desc
-      quantity: $quantity
-      inventory: $inventory
       price: $price
-      instock: $instock
+      quantity: $quantity
     ) {
-      product {
-        _id
-        name
-      }
+      image
+      name
+      desc
+      price
+      quantity
     }
   }
 `;

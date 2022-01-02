@@ -30,23 +30,6 @@ const resolvers = {
         throw new AuthenticationError("No user found with this email address");
       }
 
-      addProduct: async (
-        parent,
-        { image, name, desc, quantity, inventory, price, instock }
-      ) => {
-        // Create product
-        const product = await Product.create({
-          image,
-          name,
-          desc,
-          quantity,
-          inventory,
-          price,
-          instock,
-        });
-        return { product };
-      };
-
       // If there is a user found, execute the `isCorrectPassword` instance method and check if the correct password was provided
       const correctPw = await user.isCorrectPassword(password);
 
@@ -61,7 +44,20 @@ const resolvers = {
       // Return an `Auth` object that consists of the signed token and user's information
       return { token, user };
     },
+    addProduct: async (parent, { image, name, desc, price, quantity }) => {
+      // Create product
+      const product = await Product.create({
+        image,
+        name,
+        desc,
+        price,
+        quantity,
+      });
+      return { product };
+    },
   },
 };
+
+//ALERT: Make any changes here, and reinstall node modules in client
 
 module.exports = resolvers;

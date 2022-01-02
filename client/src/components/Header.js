@@ -6,6 +6,7 @@ import Auth from "../utils/Auth";
 const Header = () => {
   const logout = (event) => {
     event.preventDefault();
+
     Auth.logout();
   };
   return (

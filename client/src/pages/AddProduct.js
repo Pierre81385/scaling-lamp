@@ -7,26 +7,25 @@ import { Link } from "react-router-dom";
 
 const AddProduct = () => {
   const [formState, setFormState] = useState({
-    iamge: "",
+    image: "",
     name: "",
     desc: "",
-    quantity: "",
-    inventory: "",
     price: "",
-    instock: "",
+    quantity: "",
   });
   const [addProduct, { error, data }] = useMutation(ADD_PRODUCT);
 
+  // update state based on form input changes
   const handleChange = (event) => {
-    const { name, image, value } = event.target;
+    const { name, value } = event.target;
 
     setFormState({
       ...formState,
-      [image]: value,
       [name]: value,
     });
   };
 
+  // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
@@ -39,22 +38,23 @@ const AddProduct = () => {
       console.error(e);
     }
   };
+
   return (
     <main className="flex-row justify-center mb-4">
       <div className="col-12 col-lg-10">
         <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Add Product</h4>
+          <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
           <div className="card-body">
             {data ? (
               <p>
                 Success! You may now head{" "}
-                <Link to="/">back to the product shop page.</Link>
+                <Link to="/">back to the homepage.</Link>
               </p>
             ) : (
               <form onSubmit={handleFormSubmit}>
                 <input
                   className="form-input"
-                  placeholder="Image URL"
+                  placeholder="Your image URL"
                   name="image"
                   type="text"
                   value={formState.image}
@@ -62,7 +62,7 @@ const AddProduct = () => {
                 />
                 <input
                   className="form-input"
-                  placeholder="Product name"
+                  placeholder="Your product name"
                   name="name"
                   type="text"
                   value={formState.name}
@@ -70,48 +70,26 @@ const AddProduct = () => {
                 />
                 <input
                   className="form-input"
-                  placeholder="Product desc"
-                  name="description"
+                  placeholder="Your product description"
+                  name="desc"
                   type="text"
                   value={formState.desc}
                   onChange={handleChange}
                 />
                 <input
                   className="form-input"
-                  placeholder="Product quantity"
-                  name="quantity"
-                  type="int"
-                  value={formState.quantity}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="Product inventory"
-                  name="inventory"
-                  type="number"
-                  value={formState.inventory}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="Product price"
+                  placeholder="Your product price"
                   name="price"
-                  type="number"
-                  value={formState.desc}
+                  type="text"
+                  value={formState.price}
                   onChange={handleChange}
                 />
-                <select value={formState.instock} onChange={handleChange}>
-                  <option selected value>
-                    Yes
-                  </option>
-                  <option value>No</option>
-                </select>
                 <input
                   className="form-input"
-                  placeholder="Product stock status"
-                  name="stock"
-                  type="boolean"
-                  value={formState.desc}
+                  placeholder="Your product quantity"
+                  name="quantity"
+                  type="text"
+                  value={formState.quantity}
                   onChange={handleChange}
                 />
                 <button

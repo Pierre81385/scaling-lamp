@@ -13,10 +13,8 @@ const typeDefs = gql`
     image: String
     name: String
     desc: String
-    quantity: Int
-    inventory: Int
-    price: Int
-    instock: Boolean
+    price: String
+    quantity: String
   }
 
   type Auth {
@@ -38,12 +36,12 @@ const typeDefs = gql`
       image: String!
       name: String!
       desc: String!
-      quantity: Int!
-      inventory: Int!
-      price: Int!
-      instock: Boolean!
+      price: String!
+      quantity: String!
     ): Product
   }
 `;
+
+//ALERT: Make any changes here, and reinstall node modules in client
 
 module.exports = typeDefs;

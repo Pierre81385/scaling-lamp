@@ -28,9 +28,8 @@ export const QUERY_PRODUCTS = gql`
       image
       name
       desc
-      quantity
       price
-      instock
+      quantity
     }
   }
 `;
