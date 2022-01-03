@@ -1,9 +1,28 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import Auth from "../utils/Auth";
+import LampIcon from "../assets/lamp.png";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Header = () => {
+  const style = {
+    h1: {
+      fontSize: "3rem",
+      textDecoration: "none",
+      color: "black",
+    },
+    image: {
+      width: "50px",
+    },
+    link: {
+      marginTop: "15px",
+      marginLeft: "15px",
+    },
+    linkDiv: {
+      marginTop: "25px",
+    },
+  };
+
   const logout = (event) => {
     event.preventDefault();
 
@@ -12,35 +31,53 @@ const Header = () => {
   return (
     <header className="text-dark mb-4 py-3 display-flex align-center">
       <div className="container flex-column justify-space-between-lg justify-center align-center text-center">
-        <Link className="text-dark" to="/">
-          <h1 style={{ fontSize: "3rem" }}>Shop Here</h1>
+        <Link style={style.h1} to="/">
+          SCALING-LAMP
         </Link>
-        <div>
+        <img src={LampIcon} style={style.image}></img>
+        <div style={style.linkDiv}>
           {!Auth.loggedIn() ? (
             <>
-              <Link className="btn btn-lg btn-primary m-2" to="/login">
+              <Link
+                className="btn btn-outline-dark"
+                style={style.link}
+                to="/login"
+              >
                 Login
               </Link>
-              <Link className="btn btn-lg btn-primary m-2" to="/signup">
+              <Link
+                className="btn btn-outline-dark"
+                style={style.link}
+                to="/signup"
+              >
                 Sign Up
               </Link>
             </>
           ) : (
             <>
-              <Link className="btn btn-lg btn-light m-2" to="/">
-                SHOP
+              <Link className="btn btn-outline-dark" style={style.link} to="/">
+                Shop
               </Link>
 
-              <Link className="btn btn-lg btn-light m-2" to="/addproduct">
+              <Link
+                className="btn btn-outline-dark"
+                style={style.link}
+                to="/addproduct"
+              >
                 Add Product
               </Link>
 
-              <Link className="btn btn-lg btn-light m-2" to="/manageproducts">
+              <Link
+                className="btn btn-outline-dark"
+                style={style.link}
+                to="/manageproducts"
+              >
                 Manage Product
               </Link>
 
               <Link
-                className="btn btn-lg btn-light m-2"
+                className="btn btn-outline-dark"
+                style={style.link}
                 to="/login"
                 onClick={logout}
               >

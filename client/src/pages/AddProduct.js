@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_PRODUCT } from "../utils/Mutations";
 import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 const AddProduct = () => {
   const [formState, setFormState] = useState({
@@ -91,13 +92,13 @@ const AddProduct = () => {
                   value={formState.quantity}
                   onChange={handleChange}
                 />
-                <button
-                  className="btn btn-block btn-info"
+                <Button
+                  variant="outline-dark"
                   style={{ cursor: "pointer" }}
                   type="submit"
                 >
                   Upload to Database
-                </button>
+                </Button>
               </form>
             )}
 

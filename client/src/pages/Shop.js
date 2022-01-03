@@ -28,11 +28,11 @@ function Shop() {
       boxShadow: "0 15px 25px rgba(129, 124, 124, 0.2)",
       borderRadius: "5px",
       backdropFilter: "blur(7px)",
-      backgroundColor: "rgba(0, 0, 0, 0.5)",
+      backgroundColor: "rgba(0, 0, 0, 0)",
       padding: "10px",
       textAlign: "center",
       width: "18rem",
-      color: "white",
+      color: "black",
     },
   };
 
@@ -57,13 +57,13 @@ function Shop() {
           <Card.Footer class="text-center" style={{ paddingTop: "10px" }}>
             {!Auth.loggedIn() ? (
               <>
-                <Link className="btn btn-lg btn-primary m-2" to="/login">
+                <Link className="btn btn-outline-dark" to="/login">
                   Login to Purchase
                 </Link>
               </>
             ) : (
               <>
-                <Button>Add to Cart</Button>
+                <Button variant="outline-dark">Add to Cart</Button>
               </>
             )}
           </Card.Footer>
