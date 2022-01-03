@@ -13,8 +13,8 @@ const typeDefs = gql`
     image: String
     name: String
     desc: String
-    price: String
-    quantity: String
+    price: Int
+    quantity: Int
   }
 
   type Auth {
@@ -39,6 +39,7 @@ const typeDefs = gql`
       price: String!
       quantity: String!
     ): Product
+    deleteProduct(name: String!): Product
   }
 `;
 

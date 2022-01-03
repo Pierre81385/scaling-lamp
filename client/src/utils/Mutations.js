@@ -47,3 +47,11 @@ export const ADD_PRODUCT = gql`
     }
   }
 `;
+
+export const DELETE_PRODUCT = gql`
+  mutation deleteProduct($name: String!) {
+    deleteProduct(name: $name) {
+      name
+    }
+  }
+`;

@@ -1,3 +1,59 @@
+# Scaling-Lamp eCommerce (MERN STACK)
+
+Using this Full Stack application, a user can interact with the Scaling-Lamp app online to:
+
+- `Create an account`
+- `Login or logout of the application`
+- `Browse the list of avialble products availible to purchase`
+- `Add products to their cart and purchase`
+- `When logged in the user can see the list of the items they've purchased in the past`
+- `CREATE new users and add products`
+- `READ database and display products and user details`
+- `UPDATE product and user accounts`
+- `DELETE products and user accounts`
+
+# Table of Contents
+
+- [Installation](#installation)
+- [Technologies](#technologies)
+- [License](#license)
+- [Contributors](#contributors)
+- [Questions](#questions)
+
+# Installation
+
+No installation necessary, visit our website here: http://
+
+# Technologies
+
+A list of technologies used within the project:
+
+- [Javascript]
+- [HTML]
+- [CSS]
+- [MongoDB](https://www.mongodb.com/)
+- [Express.js](https://expressjs.com/)
+- [REACT](https://reactjs.org/)
+- [Node.js](https://nodejs.org/en/)
+- [Bootstrap](https://getbootstrap.com/)
+- [GraphQL](https://graphql.org/)
+- [JWTAuth](https://jwt.io)
+
+# License
+
+None at this time.
+
+# Contributors
+
+- [Peter Bishop](https://github.com/pierre81385)
+
+# Questions
+
+If you have any questions feel free to contact me and fellow contributors at:
+pjb.den@gmail.com
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -1,13 +1,16 @@
+//Update and Delete Products
+
 //Display products
 
-import React from "react";
+import React, { setState } from "react";
 import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
 import { QUERY_PRODUCTS } from "../utils/Queries";
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import Auth from "../utils/Auth";
 import { Link } from "react-router-dom";
+import { DELETE_PRODUCT } from "../utils/Mutations";
 
-function Shop() {
+function ManageProducts() {
   const style = {
     container: {
       textAlign: "center",
@@ -18,6 +21,7 @@ function Shop() {
       height: "100%", // so that the content will center correctly
       paddingTop: "25px",
       paddingBottom: "25px",
+      //paddingLeft: "110px", //NEEDS MEDIA QUERY to set this only to set when viewport is small
     },
     img: {
       width: "300px",
@@ -34,10 +38,19 @@ function Shop() {
       width: "18rem",
       color: "white",
     },
+    button: {
+      marginLeft: "10px",
+    },
   };
 
   const { loading, data } = useQuery(QUERY_PRODUCTS);
   const product = data?.products || {};
+
+  const [deleteProduct] = useMutation(DELETE_PRODUCT);
+
+  const handleClick = () => {
+    this.setState({ mssg: "Page Updated" });
+  };
 
   const renderCard = (oneProduct) => {
     return (
@@ -58,12 +71,21 @@ function Shop() {
             {!Auth.loggedIn() ? (
               <>
                 <Link className="btn btn-lg btn-primary m-2" to="/login">
-                  Login to Purchase
+                  Login to Change
                 </Link>
               </>
             ) : (
               <>
-                <Button>Add to Cart</Button>
+                <Button style={style.button}>Update</Button>
+                <Button
+                  style={style.button}
+                  onClick={() => {
+                    deleteProduct({ variables: { name: oneProduct.name } });
+                    handleClick();
+                  }}
+                >
+                  Delete
+                </Button>
               </>
             )}
           </Card.Footer>
@@ -90,4 +112,4 @@ function Shop() {
   );
 }
 
-export default Shop;
+export default ManageProducts;

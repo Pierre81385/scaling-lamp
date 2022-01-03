@@ -1,9 +1,9 @@
+//Add Products
+
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_PRODUCT } from "../utils/Mutations";
 import { Link } from "react-router-dom";
-
-//This page is for ADDING products to the DB by the user.
 
 const AddProduct = () => {
   const [formState, setFormState] = useState({
@@ -43,18 +43,17 @@ const AddProduct = () => {
     <main className="flex-row justify-center mb-4">
       <div className="col-12 col-lg-10">
         <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
+          <h4 className="card-header bg-dark text-light p-2">Add Product</h4>
           <div className="card-body">
             {data ? (
               <p>
-                Success! You may now head{" "}
-                <Link to="/">back to the homepage.</Link>
+                Success! You may now head <Link to="/">back to the shop.</Link>
               </p>
             ) : (
               <form onSubmit={handleFormSubmit}>
                 <input
                   className="form-input"
-                  placeholder="Your image URL"
+                  placeholder="Image URL"
                   name="image"
                   type="text"
                   value={formState.image}
@@ -62,7 +61,7 @@ const AddProduct = () => {
                 />
                 <input
                   className="form-input"
-                  placeholder="Your product name"
+                  placeholder="Product Name"
                   name="name"
                   type="text"
                   value={formState.name}
@@ -70,7 +69,7 @@ const AddProduct = () => {
                 />
                 <input
                   className="form-input"
-                  placeholder="Your product description"
+                  placeholder="Product Description"
                   name="desc"
                   type="text"
                   value={formState.desc}
@@ -78,7 +77,7 @@ const AddProduct = () => {
                 />
                 <input
                   className="form-input"
-                  placeholder="Your product price"
+                  placeholder="Price (Numbers Only"
                   name="price"
                   type="text"
                   value={formState.price}
@@ -86,7 +85,7 @@ const AddProduct = () => {
                 />
                 <input
                   className="form-input"
-                  placeholder="Your product quantity"
+                  placeholder="Quantity (Numbers Only)"
                   name="quantity"
                   type="text"
                   value={formState.quantity}
@@ -97,7 +96,7 @@ const AddProduct = () => {
                   style={{ cursor: "pointer" }}
                   type="submit"
                 >
-                  Submit
+                  Upload to Database
                 </button>
               </form>
             )}

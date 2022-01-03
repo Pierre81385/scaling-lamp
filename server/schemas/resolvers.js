@@ -55,6 +55,11 @@ const resolvers = {
       });
       return { product };
     },
+    deleteProduct: async (parent, args) => {
+      const { name } = args;
+      console.log("Product " + name + " Deleted");
+      await Product.findOneAndRemove({ name: name });
+    },
   },
 };
 
