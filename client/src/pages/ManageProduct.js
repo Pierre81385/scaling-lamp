@@ -1,16 +1,12 @@
-//Update and Delete Products
-
-//Display products
-
 import React, { setState } from "react";
 import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
 import { QUERY_PRODUCTS } from "../utils/Queries";
 import { useQuery, useMutation } from "@apollo/client";
 import Auth from "../utils/Auth";
 import { Link } from "react-router-dom";
-import { DELETE_PRODUCT } from "../utils/Mutations";
+import { DELETE_PRODUCT } from "../utils/Mutations"; //add product added
 
-function ManageProducts() {
+function DeleteProduct() {
   const style = {
     container: {
       textAlign: "center",
@@ -49,7 +45,7 @@ function ManageProducts() {
   const [deleteProduct] = useMutation(DELETE_PRODUCT);
 
   const handleClick = () => {
-    this.setState({ mssg: "Page Updated" });
+    console.log("Delete Product Button Pressed");
   };
 
   const renderCard = (oneProduct) => {
@@ -67,7 +63,7 @@ function ManageProducts() {
             <p>${oneProduct.price}</p>
             <p>Quantity Availible: {oneProduct.quantity}</p>
           </Card.Body>
-          <Card.Footer class="text-center" style={{ paddingTop: "10px" }}>
+          <Card.Footer className="text-center" style={{ paddingTop: "10px" }}>
             {!Auth.loggedIn() ? (
               <>
                 <Link className="btn btn-outline-dark" to="/login">
@@ -76,9 +72,13 @@ function ManageProducts() {
               </>
             ) : (
               <>
-                <Button variant="outline-dark" style={style.button}>
+                <Link
+                  className="btn btn-outline-dark"
+                  style={style.link}
+                  to="/updateproduct"
+                >
                   Update
-                </Button>
+                </Link>
                 <Button
                   variant="outline-dark"
                   style={style.button}
@@ -106,6 +106,15 @@ function ManageProducts() {
 
   return (
     <div style={{ maxWidth: "100vw", overflowX: "hidden" }}>
+      <div className="text-center">
+        <Link
+          className="btn btn-outline-dark"
+          style={style.link}
+          to="/addproduct"
+        >
+          Add Product
+        </Link>
+      </div>
       <Container style={style.container} fluid>
         <Row xs={1} sm={2} md={3} className="g-4">
           {productArray.map(renderCard)}
@@ -115,4 +124,4 @@ function ManageProducts() {
   );
 }
 
-export default ManageProducts;
+export default DeleteProduct;

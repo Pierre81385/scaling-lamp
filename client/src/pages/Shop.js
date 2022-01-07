@@ -39,6 +39,8 @@ function Shop() {
   const { loading, data } = useQuery(QUERY_PRODUCTS);
   const product = data?.products || {};
 
+  //if products.length
+
   const renderCard = (oneProduct) => {
     return (
       <Col>
@@ -54,7 +56,7 @@ function Shop() {
             <p>${oneProduct.price}</p>
             <p>Quantity Availible: {oneProduct.quantity}</p>
           </Card.Body>
-          <Card.Footer class="text-center" style={{ paddingTop: "10px" }}>
+          <Card.Footer className="text-center" style={{ paddingTop: "10px" }}>
             {!Auth.loggedIn() ? (
               <>
                 <Link className="btn btn-outline-dark" to="/login">
