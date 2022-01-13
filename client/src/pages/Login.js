@@ -29,6 +29,8 @@ const Login = (props) => {
         variables: { ...formState },
       });
 
+      localStorage.setItem("email", formState.email);
+
       Auth.login(data.login.token);
     } catch (e) {
       console.error(e);
