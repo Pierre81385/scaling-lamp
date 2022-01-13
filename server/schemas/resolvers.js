@@ -10,10 +10,8 @@ const resolvers = {
     products: async () => {
       return Product.find();
     },
-    user: async (parent, args) => {
-      const { name } = args;
-      console.log("User " + name + " found");
-      await User.findOne({ name: name });
+    user: async (parent, { userId }) => {
+      return User.findById({ _id: userId });
     },
   },
 

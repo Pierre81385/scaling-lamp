@@ -6,17 +6,15 @@ export const QUERY_USERS = gql`
       _id
       name
       email
-      dog
     }
   }
 `;
 export const QUERY_SINGLE_USER = gql`
-  query singleUser($userId: ID!) {
+  query User($userId: ID!) {
     user(userId: $userId) {
       _id
       name
       email
-      dog
     }
   }
 `;
