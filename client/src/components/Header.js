@@ -17,6 +17,7 @@ const Header = () => {
     link: {
       marginTop: "15px",
       marginLeft: "15px",
+      marginBottom: "15px",
     },
     linkDiv: {
       marginTop: "25px",
@@ -62,15 +63,23 @@ const Header = () => {
               <Link
                 className="btn btn-outline-dark"
                 style={style.link}
-                to="/addproduct"
+                to="/myprofile"
               >
-                Add Product
+                My Profile
               </Link>
 
               <Link
                 className="btn btn-outline-dark"
                 style={style.link}
-                to="/manageproducts"
+                to="/mycart"
+              >
+                My Cart
+              </Link>
+
+              <Link
+                className="btn btn-outline-dark"
+                style={style.link}
+                to="/manageproduct"
               >
                 Manage Product
               </Link>

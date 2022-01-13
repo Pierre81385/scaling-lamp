@@ -10,6 +10,11 @@ const resolvers = {
     products: async () => {
       return Product.find();
     },
+    user: async (parent, args) => {
+      const { name } = args;
+      console.log("User " + name + " found");
+      await User.findOne({ name: name });
+    },
   },
 
   Mutation: {
@@ -40,6 +45,7 @@ const resolvers = {
 
       // If email and password are correct, sign user into the application with a JWT
       const token = signToken(user);
+      //localStorage.setItem(id, user.id);
 
       // Return an `Auth` object that consists of the signed token and user's information
       return { token, user };
