@@ -8,9 +8,9 @@ Using this Full Stack application, a user can interact with the Scaling-Lamp app
 - `Add products to their cart and purchase`
 - `When logged in the user can see the list of the items they've purchased in the past`
 - `CREATE new users and add products`
-- `READ database and display products and user details`
-- `UPDATE product and user accounts`
-- `DELETE products and user accounts`
+- `READ database and display products and user details` (in progress)
+- `UPDATE product and user accounts` (in progress)
+- `DELETE products and user accounts` (in progress, delete products complete)
 
 # Table of Contents
 
