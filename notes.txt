@@ -1,0 +1,9 @@
+To make queries and mutations work...
+
+- define structure in server/schemas/typeDefs.js 
+- create function to pass data to query in server/schemas/resolvers.js 
+- define qraphql query in client/src/utils/Queries.js 
+- test query in graphql to ensure its working!
+
+Troubleshooting...
+

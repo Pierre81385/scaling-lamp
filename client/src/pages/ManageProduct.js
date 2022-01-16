@@ -1,10 +1,16 @@
 import React, { setState } from "react";
 import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
-import { QUERY_PRODUCTS } from "../utils/Queries";
+import { QUERY_PRODUCTS, QUERY_SINGLE_PRODUCT } from "../utils/Queries";
 import { useQuery, useMutation } from "@apollo/client";
 import Auth from "../utils/Auth";
 import { Link } from "react-router-dom";
 import { DELETE_PRODUCT } from "../utils/Mutations"; //add product added
+
+//For update button I need to...
+//1. find a single product
+//2. save that product ID to local storage
+//3. attach that function to the update button click
+//4. send the user to the update product page
 
 function DeleteProduct() {
   const style = {
@@ -43,8 +49,8 @@ function DeleteProduct() {
 
   const [deleteProduct] = useMutation(DELETE_PRODUCT);
 
-  const handleClick = () => {
-    console.log("Delete Product Button Pressed");
+  const handleClick = (id) => {
+    console.log("button pressed");
   };
 
   const renderCard = (oneProduct) => {
@@ -75,6 +81,13 @@ function DeleteProduct() {
                   className="btn btn-outline-dark"
                   style={style.link}
                   to="/updateproduct"
+                  onClick={() => {
+                    //save name of product to be updated to local storage.
+                    localStorage.setItem(
+                      "nameOfUpdateProduct",
+                      oneProduct.name
+                    );
+                  }}
                 >
                   Update
                 </Link>
@@ -83,7 +96,6 @@ function DeleteProduct() {
                   style={style.button}
                   onClick={() => {
                     deleteProduct({ variables: { name: oneProduct.name } });
-                    handleClick();
                   }}
                 >
                   Delete

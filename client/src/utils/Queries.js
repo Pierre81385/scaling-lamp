@@ -19,9 +19,32 @@ export const QUERY_SINGLE_USER = gql`
   }
 `;
 
+export const QUERY_USERBYEMAIL = gql`
+  query User($userEmail: String!) {
+    userByEmail(userEmail: $userEmail) {
+      _id
+      name
+      email
+    }
+  }
+`;
+
 export const QUERY_PRODUCTS = gql`
   query allProducts {
     products {
+      _id
+      image
+      name
+      desc
+      price
+      quantity
+    }
+  }
+`;
+
+export const QUERY_SINGLE_PRODUCT = gql`
+  query Product($productName: String!) {
+    product(productName: $productName) {
       _id
       image
       name

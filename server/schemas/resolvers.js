@@ -1,3 +1,6 @@
+const {
+  ProvidedRequiredArgumentsOnDirectivesRule,
+} = require("graphql/validation/rules/ProvidedRequiredArgumentsRule");
 const { User } = require("../models");
 const { Product } = require("../models");
 const { signToken } = require("../utils/auth");
@@ -12,6 +15,12 @@ const resolvers = {
     },
     user: async (parent, { userId }) => {
       return User.findById({ _id: userId });
+    },
+    userByEmail: async (parent, { userEmail }) => {
+      return User.findOne({ email: userEmail });
+    },
+    product: async (parent, { productName }) => {
+      return Product.findOne({ name: productName });
     },
   },
 
