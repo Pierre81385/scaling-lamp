@@ -36,6 +36,9 @@ const Header = () => {
           SCALING-LAMP
         </Link>
         <img src={LampIcon} style={style.image}></img>
+        <div className="container flex-column justify-space-between-lg justify-center align-center text-center">
+          An ecommerce demo site.
+        </div>
         <div style={style.linkDiv}>
           {!Auth.loggedIn() ? (
             <>

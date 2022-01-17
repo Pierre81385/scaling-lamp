@@ -84,8 +84,24 @@ function DeleteProduct() {
                   onClick={() => {
                     //save name of product to be updated to local storage.
                     localStorage.setItem(
+                      "imageOfUpdateProduct",
+                      oneProduct.image
+                    );
+                    localStorage.setItem(
                       "nameOfUpdateProduct",
                       oneProduct.name
+                    );
+                    localStorage.setItem(
+                      "descOfUpdateProduct",
+                      oneProduct.desc
+                    );
+                    localStorage.setItem(
+                      "priceOfUpdateProduct",
+                      oneProduct.price
+                    );
+                    localStorage.setItem(
+                      "quantityOfUpdateProduct",
+                      oneProduct.quantity
                     );
                   }}
                 >
