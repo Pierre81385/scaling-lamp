@@ -5,9 +5,13 @@ import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/Mutations";
 import Auth from "../utils/Auth";
+import { Form, Button } from "react-bootstrap";
 
 const Login = (props) => {
-  const [formState, setFormState] = useState({ email: "", password: "" });
+  const [formState, setFormState] = useState({
+    email: "",
+    password: "",
+  });
   const [login, { error, data }] = useMutation(LOGIN_USER);
 
   // update state based on form input changes

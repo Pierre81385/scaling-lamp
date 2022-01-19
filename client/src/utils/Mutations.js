@@ -55,3 +55,28 @@ export const DELETE_PRODUCT = gql`
     }
   }
 `;
+
+export const UPDATE_PRODUCT = gql`
+  mutation updateProduct(
+    $image: String!
+    $name: String!
+    $desc: String!
+    $price: String!
+    $quantity: String!
+  ) {
+    updateProduct(
+      image: $image
+      name: $name
+      desc: $desc
+      price: $price
+      quantity: $quantity
+    ) {
+      _id
+      image
+      name
+      desc
+      price
+      quantity
+    }
+  }
+`;

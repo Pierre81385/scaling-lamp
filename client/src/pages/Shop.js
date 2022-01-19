@@ -6,6 +6,7 @@ import { QUERY_PRODUCTS } from "../utils/Queries";
 import { useQuery } from "@apollo/client";
 import Auth from "../utils/Auth";
 import { Link } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function Shop() {
   const style = {

@@ -65,6 +65,7 @@ function DeleteProduct() {
           <Card.Body>
             <Card.Title>{oneProduct.name}</Card.Title>
             <Card.Text>{oneProduct.desc}</Card.Text>
+            <p>Product ID: {oneProduct.id}</p>
             <p>${oneProduct.price}</p>
             <p>Quantity Availible: {oneProduct.quantity}</p>
           </Card.Body>
@@ -82,7 +83,10 @@ function DeleteProduct() {
                   style={style.link}
                   to="/updateproduct"
                   onClick={() => {
+                    console.log(typeof oneProduct.id);
                     //save name of product to be updated to local storage.
+                    localStorage.setItem("idOfUpdateProduct", oneProduct.id);
+
                     localStorage.setItem(
                       "imageOfUpdateProduct",
                       oneProduct.image

@@ -3,6 +3,7 @@ const {
 } = require("graphql/validation/rules/ProvidedRequiredArgumentsRule");
 const { User } = require("../models");
 const { Product } = require("../models");
+const { findById } = require("../models/User");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -19,8 +20,8 @@ const resolvers = {
     userByEmail: async (parent, { userEmail }) => {
       return User.findOne({ email: userEmail });
     },
-    product: async (parent, { productName }) => {
-      return Product.findOne({ name: productName });
+    product: async (parent, { productId }) => {
+      return Product.findOne({ _id: productId });
     },
   },
 
@@ -72,6 +73,29 @@ const resolvers = {
       const { name } = args;
       console.log("Product " + name + " Deleted");
       await Product.findOneAndRemove({ name: name });
+    },
+    updateProduct: async (parent, { image, name, desc, price, quantity }) => {
+      const prod = Product.findOneAndUpdate(
+        { name: name },
+        {
+          image,
+          name,
+          desc,
+          price,
+          quantity,
+        }
+      );
+      console.log("Product " + prod.name + " found!");
+      if (!prod) {
+        throw new Error("Could not find product with name: " + name);
+      }
+      prod.image = image;
+      prod.name = name;
+      prod.desc = desc;
+      prod.price = price;
+      prod.quantity = quantity;
+
+      return prod;
     },
   },
 };

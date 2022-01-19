@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
 import { QUERY_SINGLE_PRODUCT } from "../utils/Queries";
 import { useQuery, useMutation } from "@apollo/client";
-import { ADD_PRODUCT } from "../utils/Mutations";
+import { UPDATE_PRODUCT } from "../utils/Mutations";
 
 import Auth from "../utils/Auth";
 import { Link } from "react-router-dom";
 
 function UpdateProduct() {
   //get vales of product to be updated from localstorage
+  let productId = localStorage.getItem("idOfUpdateProduct");
   let updateProductName = localStorage.getItem("nameOfUpdateProduct");
   let updateProductImage = localStorage.getItem("imageOfUpdateProduct");
   let updateProductDesc = localStorage.getItem("descOfUpdateProduct");
@@ -24,7 +25,7 @@ function UpdateProduct() {
     quantity: updateProductQuantity,
   });
 
-  const [addProduct, { error, data }] = useMutation(ADD_PRODUCT);
+  const [updateProduct, { error, data }] = useMutation(UPDATE_PRODUCT);
 
   //update state with new values when they're changed
   const handleChange = (event) => {
@@ -38,11 +39,13 @@ function UpdateProduct() {
 
   //submit run find and update
   const handleFormSubmit = async (event) => {
+    console.log("handleFormSubmit button pressed");
+
     event.preventDefault();
     console.log(formState);
 
     try {
-      const { data } = await addProduct({
+      const { data } = updateProduct({
         variables: { ...formState },
       });
     } catch (e) {
@@ -119,85 +122,53 @@ function UpdateProduct() {
       {/* Update Form */}
       <div className="flex-row justify-center mb-4">
         <form onSubmit={handleFormSubmit}>
-          <table style={style.table}>
-            <tr>
-              <td style={style.tdLeft}>
-                <lable>Image URL</lable>
-              </td>
-              <td style={style.tdRight}>
-                <input
-                  className="form-input"
-                  placeholder="Image URL"
-                  name="image"
-                  type="text"
-                  value={formState.image}
-                  onChange={handleChange}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td style={style.tdLeft}>
-                <lable>Product Name</lable>
-              </td>
-              <td style={style.tdRight}>
-                <input
-                  className="form-input"
-                  placeholder="Product Name"
-                  name="name"
-                  type="text"
-                  value={formState.name}
-                  onChange={handleChange}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td style={style.tdLeft}>
-                <lable>Product Description</lable>
-              </td>
-              <td style={style.tdRight}>
-                <input
-                  className="form-input"
-                  placeholder="Product Description"
-                  name="desc"
-                  type="text"
-                  value={formState.desc}
-                  onChange={handleChange}
-                />
-              </td>
-            </tr>
-
-            <tr>
-              <td style={style.tdLeft}>
-                <lable>Price (numbers only)</lable>
-              </td>
-              <td style={style.tdRight}>
-                <input
-                  className="form-input"
-                  placeholder="Price (Numbers Only"
-                  name="price"
-                  type="text"
-                  value={formState.price}
-                  onChange={handleChange}
-                />
-              </td>
-            </tr>
-
-            <tr>
-              <td style={style.tdLeft}>
-                <lable>Quantity Avalible (numbers only)</lable>
-              </td>
-              <td style={style.tdRight}>
-                <input
-                  className="form-input"
-                  placeholder="Quantity (Numbers Only)"
-                  name="quantity"
-                  type="text"
-                  value={formState.quantity}
-                  onChange={handleChange}
-                />
-              </td>
-            </tr>
-          </table>
+          <input
+            className="form-input"
+            placeholder="Image URL"
+            name="image"
+            type="text"
+            value={formState.image}
+            onChange={handleChange}
+          />
+          <input
+            className="form-input"
+            placeholder="Product Name"
+            name="name"
+            type="text"
+            value={formState.name}
+            onChange={handleChange}
+          />
+          <input
+            className="form-input"
+            placeholder="Product Description"
+            name="desc"
+            type="text"
+            value={formState.desc}
+            onChange={handleChange}
+          />
+          <input
+            className="form-input"
+            placeholder="Price (Numbers Only"
+            name="price"
+            type="text"
+            value={formState.price}
+            onChange={handleChange}
+          />
+          <input
+            className="form-input"
+            placeholder="Quantity (Numbers Only)"
+            name="quantity"
+            type="text"
+            value={formState.quantity}
+            onChange={handleChange}
+          />
+          <Button
+            variant="outline-dark"
+            style={{ cursor: "pointer" }}
+            type="submit"
+          >
+            Upload to Database
+          </Button>
         </form>
       </div>
       <div className="text-center">
@@ -208,15 +179,6 @@ function UpdateProduct() {
         >
           Cancel
         </Link>
-        <Button
-          variant="outline-dark"
-          style={style.button}
-          onClick={() => {
-            //deleteProduct({ variables: { name: oneProduct.name } });
-          }}
-        >
-          Update
-        </Button>
       </div>
     </div>
   );

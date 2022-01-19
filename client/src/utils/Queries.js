@@ -43,8 +43,8 @@ export const QUERY_PRODUCTS = gql`
 `;
 
 export const QUERY_SINGLE_PRODUCT = gql`
-  query Product($productName: String!) {
-    product(productName: $productName) {
+  query Product($productId: ID!) {
+    product(productId: $productId) {
       _id
       image
       name

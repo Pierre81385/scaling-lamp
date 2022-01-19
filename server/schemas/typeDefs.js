@@ -27,7 +27,15 @@ const typeDefs = gql`
     user(userId: ID!): User!
     userByEmail(userEmail: String!): User!
     products: [Product]
-    product(productName: String!): Product!
+    product(productId: ID!): Product!
+  }
+
+  input productInput {
+    image: String!
+    name: String!
+    desc: String!
+    price: String!
+    quantity: String!
   }
 
   type Mutation {
@@ -41,6 +49,13 @@ const typeDefs = gql`
       quantity: String!
     ): Product
     deleteProduct(name: String!): Product
+    updateProduct(
+      image: String!
+      name: String!
+      desc: String!
+      price: String!
+      quantity: String!
+    ): Product
   }
 `;
 
