@@ -8,6 +8,30 @@ import Auth from "../utils/Auth";
 import { Form, Button } from "react-bootstrap";
 
 const Login = (props) => {
+  const style = {
+    container: {
+      textAlign: "center",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      width: "100%", // make sure the parent is full screen
+      height: "100%", // so that the content will center correctly
+      paddingTop: "25px",
+      paddingBottom: "25px",
+    },
+    input: {
+      width: "100%",
+      padding: "12px 20px",
+      margin: "8px 0",
+      boxSizing: "border-box",
+    },
+    card: {
+      margin: "0 auto",
+      float: "none",
+      marginBottom: "10px",
+    },
+  };
+
   const [formState, setFormState] = useState({
     email: "",
     password: "",
@@ -49,10 +73,10 @@ const Login = (props) => {
 
   return (
     <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
+      <div className="col-12 col-lg-10" style={style.card}>
         <div className="card">
           <h4 className="card-header bg-dark text-light p-2">Login</h4>
-          <div className="card-body">
+          <div className="card-body" style={style.container}>
             {data ? (
               <p>
                 Success! You may now head{" "}
@@ -65,6 +89,7 @@ const Login = (props) => {
                   placeholder="Your email"
                   name="email"
                   type="email"
+                  style={style.input}
                   value={formState.email}
                   onChange={handleChange}
                 />
@@ -73,16 +98,17 @@ const Login = (props) => {
                   placeholder="******"
                   name="password"
                   type="password"
+                  style={style.input}
                   value={formState.password}
                   onChange={handleChange}
                 />
-                <button
-                  className="btn btn-block btn-info"
+                <Button
+                  variant="outline-dark"
                   style={{ cursor: "pointer" }}
                   type="submit"
                 >
                   Submit
-                </button>
+                </Button>
               </form>
             )}
 

@@ -56,6 +56,14 @@ export const DELETE_PRODUCT = gql`
   }
 `;
 
+export const DELETE_USER = gql`
+  mutation deleteUser($email: String!) {
+    deleteUser(email: $email) {
+      email
+    }
+  }
+`;
+
 export const UPDATE_PRODUCT = gql`
   mutation updateProduct(
     $image: String!

@@ -71,8 +71,13 @@ const resolvers = {
     },
     deleteProduct: async (parent, args) => {
       const { name } = args;
-      console.log("Product " + name + " Deleted");
+      console.log("Product " + name + " deleted");
       await Product.findOneAndRemove({ name: name });
+    },
+    deleteUser: async (parent, args) => {
+      const { email } = args;
+      console.log("User with email " + email + " deleted.");
+      await User.findOneAndRemove({ email: email });
     },
     updateProduct: async (parent, { image, name, desc, price, quantity }) => {
       const prod = Product.findOneAndUpdate(

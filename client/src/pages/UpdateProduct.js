@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 
 function UpdateProduct() {
   //get vales of product to be updated from localstorage
-  let productId = localStorage.getItem("idOfUpdateProduct");
   let updateProductName = localStorage.getItem("nameOfUpdateProduct");
   let updateProductImage = localStorage.getItem("imageOfUpdateProduct");
   let updateProductDesc = localStorage.getItem("descOfUpdateProduct");
@@ -82,17 +81,16 @@ function UpdateProduct() {
     button: {
       marginLeft: "10px",
     },
-    table: {
+    input: {
+      width: "100%",
+      padding: "12px 20px",
+      margin: "8px 0",
+      boxSizing: "border-box",
+    },
+    cardForm: {
       margin: "0 auto",
-    },
-    tdLeft: {
-      textAlign: "right",
-      paddingleft: "15px",
-      width: "500px",
-    },
-    tdRight: {
-      paddingLeft: "15px",
-      width: "500px",
+      float: "none",
+      marginBottom: "10px",
     },
   };
 
@@ -120,65 +118,77 @@ function UpdateProduct() {
       </Container>
 
       {/* Update Form */}
-      <div className="flex-row justify-center mb-4">
-        <form onSubmit={handleFormSubmit}>
-          <input
-            className="form-input"
-            placeholder="Image URL"
-            name="image"
-            type="text"
-            value={formState.image}
-            onChange={handleChange}
-          />
-          <input
-            className="form-input"
-            placeholder="Product Name"
-            name="name"
-            type="text"
-            value={formState.name}
-            onChange={handleChange}
-          />
-          <input
-            className="form-input"
-            placeholder="Product Description"
-            name="desc"
-            type="text"
-            value={formState.desc}
-            onChange={handleChange}
-          />
-          <input
-            className="form-input"
-            placeholder="Price (Numbers Only"
-            name="price"
-            type="text"
-            value={formState.price}
-            onChange={handleChange}
-          />
-          <input
-            className="form-input"
-            placeholder="Quantity (Numbers Only)"
-            name="quantity"
-            type="text"
-            value={formState.quantity}
-            onChange={handleChange}
-          />
-          <Button
-            variant="outline-dark"
-            style={{ cursor: "pointer" }}
-            type="submit"
-          >
-            Upload to Database
-          </Button>
-        </form>
-      </div>
-      <div className="text-center">
-        <Link
-          className="btn btn-outline-dark"
-          style={style.link}
-          to="/manageproduct"
-        >
-          Cancel
-        </Link>
+      <div className="flex-row justify-center mb-4 text-center">
+        <div className="col-12 col-lg-10 justify-center" style={style.cardForm}>
+          <div className="card">
+            <h4 className="card-header bg-dark text-light p-2">
+              Update Product
+            </h4>
+            <div className="card-body" style={style.container}>
+              <form onSubmit={handleFormSubmit}>
+                <input
+                  className="form-input"
+                  placeholder="Image URL"
+                  name="image"
+                  type="text"
+                  style={style.input}
+                  value={formState.image}
+                  onChange={handleChange}
+                />
+                <input
+                  className="form-input"
+                  placeholder="Product Name"
+                  name="name"
+                  type="text"
+                  style={style.input}
+                  value={formState.name}
+                  onChange={handleChange}
+                />
+                <input
+                  className="form-input"
+                  placeholder="Product Description"
+                  name="desc"
+                  type="text"
+                  style={style.input}
+                  value={formState.desc}
+                  onChange={handleChange}
+                />
+                <input
+                  className="form-input"
+                  placeholder="Price (Numbers Only"
+                  name="price"
+                  type="text"
+                  style={style.input}
+                  value={formState.price}
+                  onChange={handleChange}
+                />
+                <input
+                  className="form-input"
+                  placeholder="Quantity (Numbers Only)"
+                  name="quantity"
+                  type="text"
+                  style={style.input}
+                  value={formState.quantity}
+                  onChange={handleChange}
+                />
+                <Button
+                  variant="outline-dark"
+                  style={{ cursor: "pointer" }}
+                  type="submit"
+                >
+                  Update
+                </Button>
+                <Link
+                  className="btn btn-outline-dark"
+                  style={style.button}
+                  to="/manageproduct"
+                >
+                  Cancel
+                </Link>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

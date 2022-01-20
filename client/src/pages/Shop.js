@@ -40,7 +40,38 @@ function Shop() {
   const { loading, data } = useQuery(QUERY_PRODUCTS);
   const product = data?.products || {};
 
-  //if products.length
+  const productArray = [];
+
+  for (var i = 0; i < product.length; i++) {
+    const aProduct = Array.isArray(product) && product.length ? product[i] : {};
+    productArray.push(aProduct);
+    console.log(productArray[i].name);
+    if (localStorage.getItem(productArray[i].name) === null) {
+      localStorage.setItem(productArray[i].name, 0);
+    }
+  }
+
+  // function OrderCount(props) {
+  //   return (
+  //     <Button
+  //       variant="outline-dark"
+  //       onClick={() => {
+  //         var purchaseQantity = Number(localStorage.getItem(props.name));
+
+  //         localStorage.setItem(oneProduct.name, ++purchaseQantity);
+  //       }}
+  //     >
+  //       Add to Cart
+  //     </Button>
+  //   );
+  // }
+
+  // function Ordered(props) {
+  //   const isOrdered = props.isOrdered;
+  //   if (isOrdered) {
+  //     return <OrderCount />;
+  //   }
+  // }
 
   const renderCard = (oneProduct) => {
     return (
@@ -56,6 +87,7 @@ function Shop() {
             <Card.Text>{oneProduct.desc}</Card.Text>
             <p>${oneProduct.price}</p>
             <p>Quantity Availible: {oneProduct.quantity}</p>
+            <p>In cart: {localStorage.getItem(oneProduct.name)}</p>
           </Card.Body>
           <Card.Footer className="text-center" style={{ paddingTop: "10px" }}>
             {!Auth.loggedIn() ? (
@@ -66,7 +98,18 @@ function Shop() {
               </>
             ) : (
               <>
-                <Button variant="outline-dark">Add to Cart</Button>
+                <Button
+                  variant="outline-dark"
+                  onClick={() => {
+                    var purchaseQantity = Number(
+                      localStorage.getItem(oneProduct.name)
+                    );
+
+                    localStorage.setItem(oneProduct.name, ++purchaseQantity);
+                  }}
+                >
+                  Add to Cart
+                </Button>
               </>
             )}
           </Card.Footer>
@@ -74,13 +117,6 @@ function Shop() {
       </Col>
     );
   };
-
-  const productArray = [];
-
-  for (var i = 0; i < product.length; i++) {
-    const aProduct = Array.isArray(product) && product.length ? product[i] : {};
-    productArray.push(aProduct);
-  }
 
   return (
     <div style={{ maxWidth: "100vw", overflowX: "hidden" }}>

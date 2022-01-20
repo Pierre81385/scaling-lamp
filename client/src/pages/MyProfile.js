@@ -2,12 +2,15 @@
 import React, { setState } from "react";
 import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
 import { QUERY_USERBYEMAIL } from "../utils/Queries";
-import { useQuery } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import Auth from "../utils/Auth";
 import { Link } from "react-router-dom";
+import { DELETE_USER } from "../utils/Mutations";
 
 function DeleteProfile() {
   const currentUserEmail = localStorage.getItem("email");
+
+  const [deleteUser] = useMutation(DELETE_USER);
 
   const style = {
     container: {
@@ -72,7 +75,10 @@ function DeleteProfile() {
           variant="outline-dark"
           style={style.button}
           onClick={() => {
-            //deleteProduct({ variables: { name: oneProduct.name } });
+            deleteUser({ variables: { email: currentUserEmail } });
+            Auth.logout();
+            localStorage.removeItem("email");
+            window.location.href = "/";
           }}
         >
           Delete Profile
@@ -82,11 +88,14 @@ function DeleteProfile() {
           variant="outline-dark"
           style={style.button}
           onClick={() => {
-            //deleteProduct({ variables: { name: oneProduct.name } });
+            //change password mutation here
           }}
         >
-          Change Password
+          Update Profile
         </Button>
+        <Link className="btn btn-outline-dark" style={style.button} to="/">
+          Cancel
+        </Link>
       </div>
     </div>
   );
