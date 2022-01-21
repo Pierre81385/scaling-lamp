@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import Auth from "../utils/Auth";
 import LampIcon from "../assets/lamp.png";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { QUERY_PRODUCTS } from "../utils/Queries";
+import { useQuery } from "@apollo/client";
 
 const Header = () => {
   const style = {
@@ -24,11 +26,25 @@ const Header = () => {
     },
   };
 
+  const { loading, data } = useQuery(QUERY_PRODUCTS);
+  const product = data?.products || {};
+
+  const productArray = [];
+
   const logout = (event) => {
     event.preventDefault();
 
+    for (var i = 0; i < product.length; i++) {
+      const aProduct =
+        Array.isArray(product) && product.length ? product[i] : {};
+      productArray.push(aProduct);
+      console.log(productArray[i].name);
+      localStorage.setItem(productArray[i].name, 0);
+    }
+
     Auth.logout();
   };
+
   return (
     <header className="text-dark mb-4 py-3 display-flex align-center">
       <div className="container flex-column justify-space-between-lg justify-center align-center text-center">

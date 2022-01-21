@@ -1,6 +1,6 @@
 //Display products
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
 import { QUERY_PRODUCTS } from "../utils/Queries";
 import { useQuery } from "@apollo/client";
@@ -51,32 +51,33 @@ function Shop() {
     }
   }
 
-  // function OrderCount(props) {
-  //   return (
-  //     <Button
-  //       variant="outline-dark"
-  //       onClick={() => {
-  //         var purchaseQantity = Number(localStorage.getItem(props.name));
+  const [cart, addToCart] = useState({
+    name: "",
+    amount: 0,
+  });
 
-  //         localStorage.setItem(oneProduct.name, ++purchaseQantity);
-  //       }}
-  //     >
-  //       Add to Cart
-  //     </Button>
+  // function useLocalStorage(key, initialState) {
+  //   const [value, setValue] = useState(localStorage.getItem(key) ?? initialState);
+  //   const updatedSetValue = useCallback(
+  //     newValue => {
+  //       if (newValue === initialState || typeof newValue === 'undefined') {
+  //         localStorage.removeItem(key);
+  //       } else {
+  //         localStorage.setItem(key, newValue);
+  //       }
+  //       setValue(newValue ?? initialState);
+  //     },
+  //     [initialState, key]
   //   );
+  //   return [value, updatedSetValue];
   // }
 
-  // function Ordered(props) {
-  //   const isOrdered = props.isOrdered;
-  //   if (isOrdered) {
-  //     return <OrderCount />;
-  //   }
-  // }
+  // const [value, setValue] = useLocalStorage("key", "initial");
 
   const renderCard = (oneProduct) => {
     return (
       <Col>
-        <Card style={style.card} key={oneProduct.id}>
+        <Card style={style.card}>
           <Card.Img
             variant="top"
             src={oneProduct.image}
@@ -87,7 +88,9 @@ function Shop() {
             <Card.Text>{oneProduct.desc}</Card.Text>
             <p>${oneProduct.price}</p>
             <p>Quantity Availible: {oneProduct.quantity}</p>
-            <p>In cart: {localStorage.getItem(oneProduct.name)}</p>
+            <p key={oneProduct.id}>
+              In cart: {localStorage.getItem(oneProduct.name)}
+            </p>
           </Card.Body>
           <Card.Footer className="text-center" style={{ paddingTop: "10px" }}>
             {!Auth.loggedIn() ? (
@@ -99,13 +102,18 @@ function Shop() {
             ) : (
               <>
                 <Button
+                  id="addCart"
                   variant="outline-dark"
                   onClick={() => {
-                    var purchaseQantity = Number(
-                      localStorage.getItem(oneProduct.name)
-                    );
+                    addToCart({
+                      ...cart,
+                      name: oneProduct.name,
+                      amount: Number(localStorage.getItem(oneProduct.name)),
+                    });
 
-                    localStorage.setItem(oneProduct.name, ++purchaseQantity);
+                    var purchaseQantity = cart.amount;
+
+                    localStorage.setItem(cart.name, ++purchaseQantity);
                   }}
                 >
                   Add to Cart
