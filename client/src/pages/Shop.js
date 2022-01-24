@@ -1,6 +1,6 @@
 //Display products
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
 import { QUERY_PRODUCTS } from "../utils/Queries";
 import { useQuery } from "@apollo/client";
@@ -56,28 +56,16 @@ function Shop() {
     amount: 0,
   });
 
-  // function useLocalStorage(key, initialState) {
-  //   const [value, setValue] = useState(localStorage.getItem(key) ?? initialState);
-  //   const updatedSetValue = useCallback(
-  //     newValue => {
-  //       if (newValue === initialState || typeof newValue === 'undefined') {
-  //         localStorage.removeItem(key);
-  //       } else {
-  //         localStorage.setItem(key, newValue);
-  //       }
-  //       setValue(newValue ?? initialState);
-  //     },
-  //     [initialState, key]
-  //   );
-  //   return [value, updatedSetValue];
-  // }
+  const [count, setCount] = useState(1);
 
-  // const [value, setValue] = useLocalStorage("key", "initial");
+  useEffect(() => {
+    console.log(`Purchase clicked ${count} times`);
+  });
 
   const renderCard = (oneProduct) => {
     return (
       <Col>
-        <Card style={style.card}>
+        <Card style={style.card} key={oneProduct.id}>
           <Card.Img
             variant="top"
             src={oneProduct.image}
@@ -88,9 +76,7 @@ function Shop() {
             <Card.Text>{oneProduct.desc}</Card.Text>
             <p>${oneProduct.price}</p>
             <p>Quantity Availible: {oneProduct.quantity}</p>
-            <p key={oneProduct.id}>
-              In cart: {localStorage.getItem(oneProduct.name)}
-            </p>
+            <p>In cart:{localStorage.getItem(oneProduct.name)}</p>
           </Card.Body>
           <Card.Footer className="text-center" style={{ paddingTop: "10px" }}>
             {!Auth.loggedIn() ? (
@@ -105,11 +91,18 @@ function Shop() {
                   id="addCart"
                   variant="outline-dark"
                   onClick={() => {
+                    setCount(count + 1);
                     addToCart({
                       ...cart,
                       name: oneProduct.name,
-                      amount: Number(localStorage.getItem(oneProduct.name)),
+                      amount: count,
                     });
+
+                    if (cart.name === "") {
+                      cart.name = oneProduct.name;
+                    }
+
+                    console.log(cart.name);
 
                     var purchaseQantity = cart.amount;
 
