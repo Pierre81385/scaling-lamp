@@ -1,6 +1,6 @@
 //Add Products
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_PRODUCT } from "../utils/Mutations";
 import { Link } from "react-router-dom";
@@ -32,6 +32,13 @@ const AddProduct = () => {
     button: {
       marginLeft: "10px",
     },
+    img: {
+      marginTop: "30px",
+      width: "300px",
+      display: "block",
+      marginLeft: "auto",
+      marginRight: "auto",
+    },
   };
 
   //Setting input form to have blank values.
@@ -53,6 +60,10 @@ const AddProduct = () => {
       [name]: value,
     });
   };
+
+  useEffect(() => {
+    console.log("image URL " + formState.image);
+  });
 
   // submit form and send input values to DB to create a new Product
   const handleFormSubmit = async (event) => {
@@ -81,6 +92,7 @@ const AddProduct = () => {
       <div className="col-12 col-lg-10 justify-center" style={style.card}>
         <div className="card">
           <h4 className="card-header bg-dark text-light p-2">Add Product</h4>
+          <img src={formState.image} style={style.img}></img>
           <div className="card-body" style={style.container}>
             {data ? (
               <p>
@@ -90,7 +102,7 @@ const AddProduct = () => {
               <form onSubmit={handleFormSubmit}>
                 <input
                   className="form-input"
-                  placeholder="Image URL"
+                  placeholder="Image URL, sucessful link will display an image preview"
                   name="image"
                   type="text"
                   style={style.input}

@@ -19,6 +19,7 @@ import DeleteProduct from "./pages/ManageProduct";
 import UpdateProduct from "./pages/UpdateProduct";
 import DeleteProfile from "./pages/MyProfile";
 import Footer from "./components/Footer";
+import ShoppingCart from "./pages/ShoppingCart";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -78,6 +79,9 @@ function App() {
               </Route>
               <Route exact path="/myprofile">
                 <DeleteProfile />
+              </Route>
+              <Route exact path="/mycart">
+                <ShoppingCart />
               </Route>
             </Col>
           </Row>
