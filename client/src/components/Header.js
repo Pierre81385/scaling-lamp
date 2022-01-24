@@ -1,5 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { useNavigate } from "react-dom";
 import Auth from "../utils/Auth";
 import LampIcon from "../assets/lamp.png";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -43,7 +44,18 @@ const Header = () => {
     }
 
     Auth.logout();
+    setLoginStatus(false);
+    handleClick();
   };
+
+  const [isLoggedIn, setLoginStatus] = useState(true);
+
+  useEffect(() => {
+    console.log("Login status: " + isLoggedIn);
+  });
+
+  const history = useHistory();
+  const handleClick = () => history.push("/login");
 
   return (
     <header className="text-dark mb-4 py-3 display-flex align-center">
