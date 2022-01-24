@@ -118,6 +118,9 @@ const Login = (props) => {
               </div>
             )}
           </div>
+          <h4 className="text-center">
+            To test use: "test@test.com", "Password"
+          </h4>
         </div>
       </div>
     </main>

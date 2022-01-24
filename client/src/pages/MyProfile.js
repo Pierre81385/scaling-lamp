@@ -91,7 +91,7 @@ function DeleteProfile() {
             //change password mutation here
           }}
         >
-          Update Profile
+          Update Password
         </Button>
         <Link className="btn btn-outline-dark" style={style.button} to="/">
           Cancel

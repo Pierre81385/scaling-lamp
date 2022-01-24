@@ -45,7 +45,7 @@ function Shop() {
   for (var i = 0; i < product.length; i++) {
     const aProduct = Array.isArray(product) && product.length ? product[i] : {};
     productArray.push(aProduct);
-    console.log(productArray[i].name);
+    //console.log(productArray[i].name);
     if (localStorage.getItem(productArray[i].name) === null) {
       localStorage.setItem(productArray[i].name, 0);
     }
@@ -92,19 +92,31 @@ function Shop() {
                   variant="outline-dark"
                   onClick={() => {
                     setCount(count + 1);
+
                     addToCart({
                       ...cart,
                       name: oneProduct.name,
                       amount: count,
                     });
 
-                    if (cart.name === "") {
-                      cart.name = oneProduct.name;
-                    }
-
-                    console.log(cart.name);
+                    console.log("addToCart has name " + cart.name);
+                    console.log("addToCart has amount " + cart.amount);
 
                     var purchaseQantity = cart.amount;
+
+                    if (cart.name === "") {
+                      cart.name = oneProduct.name;
+                      purchaseQantity = 0;
+                    } else if (cart.name != oneProduct.name) {
+                      cart.name = oneProduct.name;
+                      purchaseQantity = 0;
+                    } else {
+                      purchaseQantity = localStorage.getItem(oneProduct.name);
+                    }
+
+                    console.log(
+                      "value of purchaseQuantity is " + purchaseQantity
+                    );
 
                     localStorage.setItem(cart.name, ++purchaseQantity);
                   }}
