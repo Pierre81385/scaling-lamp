@@ -5,12 +5,18 @@ Using this Full Stack application, a user can interact with the Scaling-Lamp app
 - `Create an account`
 - `Login or logout of the application`
 - `Browse the list of avialble products availible to purchase`
-- `Add products to their cart and purchase`
-- `When logged in the user can see the list of the items they've purchased in the past`
+- `Add products to their cart` (in progress, cart page needed but products track adding to cart in local storage)
+- `When logged in the user can see the list of the items they've purchased in the past` (in progress, need to send purchase products to DB linked to userId)
 - `CREATE new users and add products`
-- `READ database and display products and user details` (in progress)
-- `UPDATE product and user accounts` (in progress)
-- `DELETE products and user accounts` (in progress, delete products complete)
+- `READ database and display products and user details`
+- `UPDATE product and user accounts` (in progress, would like to add send email password reset request)
+- `DELETE products and user accounts`
+
+# TODO List
+
+- `create order summary on "My Cart" page`
+- `"My Cart" page needs to add option to RESET cart OR PURCHASE (commit to database as an order)`
+- `Confirm user choice before proceeding needed at Logout button, Delete Product button, and Delete User button`
 
 # Table of Contents
 

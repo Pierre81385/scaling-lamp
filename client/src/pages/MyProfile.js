@@ -1,6 +1,14 @@
 //Update and Delete Users
 import React, { setState } from "react";
-import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  Button,
+  Form,
+  Alert,
+} from "react-bootstrap";
 import { QUERY_USERBYEMAIL } from "../utils/Queries";
 import { useMutation } from "@apollo/client";
 import Auth from "../utils/Auth";
@@ -88,10 +96,10 @@ function DeleteProfile() {
           variant="outline-dark"
           style={style.button}
           onClick={() => {
-            //change password mutation here
+            alert("Password Reset Request sent to your profile email!"); //future development
           }}
         >
-          Update Password
+          Request Password Reset
         </Button>
         <Link className="btn btn-outline-dark" style={style.button} to="/">
           Cancel

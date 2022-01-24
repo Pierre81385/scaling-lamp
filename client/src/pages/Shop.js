@@ -1,6 +1,6 @@
 //Display products
 
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, initialState } from "react";
 import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
 import { QUERY_PRODUCTS } from "../utils/Queries";
 import { useQuery } from "@apollo/client";
@@ -105,36 +105,43 @@ function Shop() {
                     var purchaseQantity = cart.amount;
 
                     if (cart.name === "") {
-                      if (purchaseQantity > 0) {
+                      if (localStorage.getItem(oneProduct.name) > 0) {
+                        console.log("condition 1");
                         cart.name = oneProduct.name;
                         purchaseQantity = localStorage.getItem(oneProduct.name);
                       } else {
+                        console.log("condition 1 else");
                         cart.name = oneProduct.name;
                         purchaseQantity = 0;
                       }
                     } else if (cart.name != oneProduct.name) {
+                      console.log("condition 2");
+
                       if (purchaseQantity > 0) {
                         cart.name = oneProduct.name;
                         purchaseQantity = localStorage.getItem(oneProduct.name);
                       } else {
+                        console.log("condition 2 else");
+
                         cart.name = oneProduct.name;
                         purchaseQantity = 0;
                       }
                     } else {
+                      console.log("condition 3");
+
                       purchaseQantity = localStorage.getItem(oneProduct.name);
                       console.log(
                         "purchase quantity of " +
                           purchaseQantity +
-                          "set for " +
+                          " set for " +
                           oneProduct.name
                       );
                     }
 
+                    localStorage.setItem(cart.name, ++purchaseQantity);
                     console.log(
                       "value of purchaseQuantity is " + purchaseQantity
                     );
-
-                    localStorage.setItem(cart.name, ++purchaseQantity);
                   }}
                 >
                   Add to Cart
