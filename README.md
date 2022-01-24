@@ -14,6 +14,7 @@ Using this Full Stack application, a user can interact with the Scaling-Lamp app
 
 # TODO List
 
+- `logout doesn't redirect back to shop page`
 - `Shop page doesn't automatically refresh after a new product is added`
 - `"My Cart" page needs to add option to RESET cart OR PURCHASE (commit to database as an order)`
 - `Confirm user choice before proceeding needed at Logout button, Delete Product button, and Delete User button`

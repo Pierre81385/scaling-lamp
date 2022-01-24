@@ -1,4 +1,4 @@
-import React, { setState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
 import { QUERY_PRODUCTS, QUERY_SINGLE_PRODUCT } from "../utils/Queries";
 import { useQuery, useMutation } from "@apollo/client";
@@ -49,9 +49,11 @@ function DeleteProduct() {
 
   const [deleteProduct] = useMutation(DELETE_PRODUCT);
 
-  const handleClick = (id) => {
-    console.log("button pressed");
-  };
+  const [productToDelete, identifyProduct] = useState("");
+
+  useEffect(() => {
+    console.log("The following product was deleted: " + productToDelete);
+  });
 
   const renderCard = (oneProduct) => {
     return (
@@ -115,6 +117,8 @@ function DeleteProduct() {
                   variant="outline-dark"
                   style={style.button}
                   onClick={() => {
+                    identifyProduct(oneProduct.name);
+
                     deleteProduct({ variables: { name: oneProduct.name } });
                   }}
                 >
