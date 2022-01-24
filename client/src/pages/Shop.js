@@ -105,13 +105,29 @@ function Shop() {
                     var purchaseQantity = cart.amount;
 
                     if (cart.name === "") {
-                      cart.name = oneProduct.name;
-                      purchaseQantity = 0;
+                      if (purchaseQantity > 0) {
+                        cart.name = oneProduct.name;
+                        purchaseQantity = localStorage.getItem(oneProduct.name);
+                      } else {
+                        cart.name = oneProduct.name;
+                        purchaseQantity = 0;
+                      }
                     } else if (cart.name != oneProduct.name) {
-                      cart.name = oneProduct.name;
-                      purchaseQantity = 0;
+                      if (purchaseQantity > 0) {
+                        cart.name = oneProduct.name;
+                        purchaseQantity = localStorage.getItem(oneProduct.name);
+                      } else {
+                        cart.name = oneProduct.name;
+                        purchaseQantity = 0;
+                      }
                     } else {
                       purchaseQantity = localStorage.getItem(oneProduct.name);
+                      console.log(
+                        "purchase quantity of " +
+                          purchaseQantity +
+                          "set for " +
+                          oneProduct.name
+                      );
                     }
 
                     console.log(
