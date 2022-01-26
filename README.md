@@ -1,6 +1,8 @@
 # Scaling-Lamp eCommerce (MERN STACK)
 
-    ![alt text](client/src/assets/scalingLamp.gif)
+# Screenshot
+
+![Alt Text](https://pacific-wildwood-82713.herokuapp.com/static/media/scalingLamp.1448e360.gif)
 
 Using this Full Stack application, a user can interact with the Scaling-Lamp app online to:
 
