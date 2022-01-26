@@ -1,17 +1,12 @@
 [
   {
-    "name": "John Smith",
-    "email": "jsmith@aol.com",
-    "password": "password"
+    "name": "Peter Bishop",
+    "email": "pjb.den@gmail.com",
+    "password": "$2b$10$1boL/GJW2AdA5uWq93j3zupjb6UXeN5OOJUgQI3/r3vWeV89sCvi6"
   },
   {
-    "name": "Jane Smith",
-    "email": "janesmith@aol.com",
-    "password": "password1"
-  },
-  {
-    "name": "Jim Smith",
-    "email": "jimsmith@aol.com",
-    "password": "password12"
+    "name": "Test User",
+    "email": "test@test.com",
+    "password": "$2b$10$taUC3VuTzTvI2IuSjNyEoelZmnH3UNqGnhx9gJkDJKa6ikqMPrhOe"
   }
 ]
