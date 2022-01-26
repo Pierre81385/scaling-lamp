@@ -1,5 +1,7 @@
 # Scaling-Lamp eCommerce (MERN STACK)
 
+    ![alt text](client/src/assets/scalingLamp.gif)
+
 Using this Full Stack application, a user can interact with the Scaling-Lamp app online to:
 
 - `Create an account`
@@ -130,3 +132,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+```
+
+```
