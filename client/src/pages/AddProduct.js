@@ -5,6 +5,7 @@ import { useMutation } from "@apollo/client";
 import { ADD_PRODUCT } from "../utils/Mutations";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import { QUERY_PRODUCTS } from "../utils/Queries";
 
 const AddProduct = () => {
   const style = {
@@ -49,7 +50,9 @@ const AddProduct = () => {
     price: "",
     quantity: "",
   });
-  const [addProduct, { error, data }] = useMutation(ADD_PRODUCT);
+  const [addProduct, { error, data }] = useMutation(ADD_PRODUCT, {
+    refetchQueries: [{ query: QUERY_PRODUCTS }],
+  });
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -85,6 +88,8 @@ const AddProduct = () => {
       price: "",
       quantity: "",
     });
+
+    localStorage.setItem("loadProduct", "TRUE");
   };
 
   return (

@@ -47,12 +47,8 @@ function DeleteProduct() {
   const { loading, data } = useQuery(QUERY_PRODUCTS);
   const product = data?.products || {};
 
-  const [deleteProduct] = useMutation(DELETE_PRODUCT);
-
-  const [productToDelete, identifyProduct] = useState("");
-
-  useEffect(() => {
-    console.log("The following product was deleted: " + productToDelete);
+  const [deleteProduct] = useMutation(DELETE_PRODUCT, {
+    refetchQueries: [{ query: QUERY_PRODUCTS }],
   });
 
   const renderCard = (oneProduct) => {
@@ -117,8 +113,6 @@ function DeleteProduct() {
                   variant="outline-dark"
                   style={style.button}
                   onClick={() => {
-                    identifyProduct(oneProduct.name);
-
                     deleteProduct({ variables: { name: oneProduct.name } });
                   }}
                 >

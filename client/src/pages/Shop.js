@@ -45,6 +45,7 @@ function Shop() {
   for (var i = 0; i < product.length; i++) {
     const aProduct = Array.isArray(product) && product.length ? product[i] : {};
     productArray.push(aProduct);
+    console.log("Populating products...");
     //console.log(productArray[i].name);
     if (localStorage.getItem(productArray[i].name) === null) {
       localStorage.setItem(productArray[i].name, 0);
@@ -56,10 +57,10 @@ function Shop() {
     amount: 0,
   });
 
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
-    console.log(`Purchase clicked ${count} times`);
+    console.log(`Re-rendered ${count} times`);
   });
 
   const renderCard = (oneProduct) => {
