@@ -1,5 +1,7 @@
 # Scaling-Lamp eCommerce (MERN STACK)
 
+Deployed Link: https://hidden-inlet-42331.herokuapp.com/
+
 # Screenshot
 
 ![Alt Text](client/src/assets/scalingLamp.gif)
