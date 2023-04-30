@@ -1,6 +1,6 @@
 # Scaling-Lamp eCommerce (MERN STACK)
 
-testing forked repo linking
+testing forked repo linking no branch
 
 Deployed Link: https://hidden-inlet-42331.herokuapp.com/
 
